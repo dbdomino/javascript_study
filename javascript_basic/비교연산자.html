@@ -1,0 +1,41 @@
+<html>
+    <head>
+
+    </head>
+    <body>
+        <script>
+            // 비교연산자
+            // boolean 형식 true false
+            let k = true;
+            let k2 = false;
+            console.log('typeof k: ' + typeof(k)); // false
+            let n1 = 3;
+            let n2 = 4;
+            // 비교연산자 == === != ===  < >
+            console.log("3 > 4 : " ); // false
+            console.log("3 > 4 : " + n1 > n2); // 문자열이 출력안되고 비교값만 출력됨
+            console.log("3 < 4 : " + (n1 < n2)); // 비교연산자 쪽에 괄호쳐서 구분해줘야 함. false
+            console.log("1 == 1 : " + (1 == 1)); // true
+            console.log("1 === 1 : " + (1 === 1)); // true
+            console.log("\'1\'' == 1 : " + ('1' == 1)); // true
+            console.log("\'1\'' === 1 : " + ('1' === 1)); // false
+            //  (1 == 1) 과 ('1' == 1)의 결과가 같다는건 자동 형변환 때문이다.
+            // 활실하게 구분하려면 === 를 써야한다.
+            // != !==도 마찬가지
+            console.log("1 != 1 : " + (1 != 1)); // false
+            console.log("1 !== 1 : " + (1 !== 1)); // false
+            console.log("\'1\'' != 1 : " + ('1' != 1)); // false
+            console.log("\'1\'' !== 1 : " + ('1' !== 1)); // true
+
+            // 문자열 비교, abc 사전순
+            console.log('ack < abk : ' + ('ack' < 'abk' )); // flase
+            console.log('apple < banana : ' + ('apple' < 'banana' )); // true
+
+
+
+
+
+        </script>
+    </body>
+
+</html>
