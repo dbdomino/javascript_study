@@ -1,0 +1,134 @@
+<html>
+    <head>
+
+    </head>
+    <body>
+        <h1 id = 'h11'> 안녕하세요.11 </h1>
+        <script>
+            // 배열 array
+            // c에서는 배열 한번 만들면 크기 변경이 불가능했다.
+            // 그러나 javascript에선 가능하며, 크기에 구애받지 않는다.
+            // 또한 string number 구분없이 배열에 값을 넣을 수 있다.
+
+            // 신기한건. const 형식은 선언시 무조건 값이 초기화되어야 한다는 것과
+            /*
+            const로 배열을 선언했을 때, 배열에 값을 추가, 삭제, 변경이 가능하다는 것이다.
+            const인데 왜그럴까?
+            실제로 const는 상수형일텐데,,, 이는 const에서 갖는 변수로 참조변수나 배열을 참조할 경우
+            const는 변수가 한번 메모리 주소를 가리키면 더 이상 다른 곳을 가리킬 수 없다는 것을 뜻한다.
+            즉 메모리 주소에 이름(변수, 식별자)를 고정시켰다고 생각하면 된다.
+            그렇다면 const 로 선언한 객체가 수정이 가능한 이유는?
+            
+            const로 설정된 arr이나 참조변수는 stack 영역에서 heap주소에 있는 배열이나 참조변수를 가리킨다.
+            여기서 heap영역의 배열은 값의 추가 삭제 변경이 가능하지만, const로 연결된 arr의 주소는 변경되지 않는 것이다.
+            참조변수를 const에 넣은것도 마찬가지다.
+            */
+            const ad= '';
+            console.log('ad' + ad);
+            const arrC = [];
+            let arr = [1, ['banana', true, 30, 15.5,'monky'], 'orange', 3]
+            console.log('array length 출력 : '+ arr.length); // 4
+            console.log('array 안의 배열 length 출력 : '+ arr[1].length); // 5
+
+            // console.log('array length 출력 : '+ arr.length());
+            for (let i = 0; i < arr.length; i++) {
+                console.log(arr[i]); // 배열 리스트 출력
+            }
+            for (let i = 0; i < arr.length; i++) {
+                console.log(arr[1][i]); // 배열 항목의 리스트 출력
+            }
+
+            // 배열에 값 지우기
+            console.log('')
+            console.log('before : '+arr);
+            // arr.pop(); // 맨뒤에꺼 제거
+            // console.log('pop : '+arr);
+            // arr.pop(); // 맨뒤에꺼 제거
+            // console.log('pop : '+arr);
+            // arr.pop(); // 맨뒤에꺼 제거
+            // console.log('pop : '+arr);
+            arr.shift(); // 맨처음것 제거
+            console.log('shift : '+arr);
+            arr.shift(); // 맨처음것 제거
+            console.log('shift : '+arr);
+            arr.shift(); // 맨처음것 제거
+            console.log('shift : '+arr);
+
+            // 배열에 값 추가
+            console.log('')
+            arrC.push("ho"); // 가장 마지막에 추가
+            console.log('push : '+arrC);
+            arrC.push("ho2");
+            console.log('push : '+arrC);
+            arrC.unshift("ho3"); // 가장 맨앞에 추가
+            console.log('unshift : '+arrC);
+            arrC.unshift("ho4");
+            console.log('unshift : '+arrC);
+
+            // 배열 splice 값 제거, 값 교체
+            const arrD = ['aa', 11 , 'bb', 22, 'cc',33];
+            console.log('before : '+arrD);
+            // arrD.splice(1, 1); // 값 교체할 옵션이 없어서 해당 인덱스 범위의 값 삭제
+            // console.log('before : '+arrD);
+            // arrD.splice(1, 2); // 값 교체할 옵션이 없어서 해당 인덱스 범위의 값 삭제
+            // console.log('before : '+arrD);
+            // arrD.splice(1); // 처음부터 해당 크기로 배열 자름
+            // console.log('before : '+arrD);
+
+            // arrD.splice(1, 1, 'orange'); // 시작index, 끝index, 값 변경 원하는것
+            // console.log('after : '+arrD);
+            // arrD.splice(1, 2, 'orange'); // 값 변경, 이건 index 1, 2 값이 사라지고 'orange'로 대체된다.
+            // console.log('after : '+arrD);
+
+            // arrD.splice(0, 0, 'orange'); // 추가
+            // arrD.unshift(0, 0, 'orange');
+            arrD.splice(1, 0, 'orange'); // 해당 인덱스위치에 추가
+            console.log('before : '+arrD);
+
+            // 값이 있나없나 찾는 것
+            console.log('arrD에 \'bb\'가 있나? : '+ arrD.includes('bb')); // true
+            console.log('arrD에 \'dd\'가 있나? : '+ arrD.includes('dd')); // false
+
+            // indexOf : 값이 있으면 해당 index 출력, 없으면 -1 출력
+            console.log('arrD에 \'bb\'가 있나? indexOf : '+ arrD.indexOf('bb')); // true
+            console.log('arrD에 \'bb\'가 있나? indexOf : '+ arrD.indexOf('dd')); // true
+            // indexOf(값, 찾기시작인덱스) 검색효율 증가 
+            console.log('arrD에 \'bb\'가 있나? indexOf : '+ arrD.indexOf('bb',1)); // 3
+            console.log('arrD에 \'bb\'가 있나? indexOf : '+ arrD.indexOf('bb',3)); // 3
+            console.log('arrD에 \'bb\'가 있나? indexOf : '+ arrD.indexOf('bb',4)); // -1
+            // lastIndexOf(값, 찾기시작인덱스) 인덱스시작위치부터 0인덱스 방향으로 찾는다.
+            console.log('arrD에 \'bb\'가 있나? lastIndexOf : '+ arrD.lastIndexOf('bb',1)); // -1
+            console.log('arrD에 \'bb\'가 있나? lastIndexOf : '+ arrD.lastIndexOf('bb',3)); // 3
+            console.log('arrD에 \'bb\'가 있나? lastIndexOf : '+ arrD.lastIndexOf('bb',4)); // 3
+
+            let arrE = [1, 2, 'apple', 'banana', '3.5', 'apple', true,'orange', 2, 'apple', 6];
+            // let arrE2 = arrE; // 이건 배열자체를 복사하는게 아니라, 배열의 주소를 복사하는 것으로 같은 배열을 바라보는 효과를 가진다.
+            let arrE2 = [1, 2, 'apple', 'banana', '3.5', 'apple', true,'orange', 2, 'apple', 6];
+            // 연습문제 1. 배열에 포함된 모든 사과를 제거하기
+            console.log('With apple : '+ arrE)
+            while (true) {
+                let _idx = arrE.indexOf('apple');
+                if (_idx < 0) break;
+                // indexOf로 없으면 -1 반환하여 반복 제거
+                arrE.splice(_idx,1); // 값제거
+            }
+            console.log('With apple : '+ arrE)
+            // 연습문제 2. 배열에 포함된 사과 개수 세기
+            // 배열 하나씩 다 점검하면서 세는것보다는 
+            let cnt = 0;
+            let _idx2 = 0
+            console.log('With apple : '+ arrE2)
+            while (true) {
+                _idx2 = arrE2.indexOf('apple', _idx2); // 검색할 범위를 줄이면서 성능 향상
+                if (_idx2 < 0) break;
+                // indexOf로 없으면 -1 반환하여 반복 제거
+                cnt += 1;
+                // 핵심
+                _idx2 += 1;
+            }
+            console.log('cnt apple : '+ cnt)
+            
+        </script>
+    </body>
+
+</html>
