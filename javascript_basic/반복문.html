@@ -1,0 +1,31 @@
+<html>
+    <head>
+
+    </head>
+    <body>
+        <h1 id='momon'>안녕하세요</h1>
+        <h1 id='momon2'>안녕하세요</h1>
+        <script>
+            // parseInt 로 문자열 string 을 number로 받아올 수 있음.
+            const num = 5;
+            let msg = '';
+
+            // for, c언어의 반복문을 그대로 채용
+            for (let i = 0; i < num; i++) {
+                msg += ' for '+i;
+            }
+            document.querySelector('h1#momon').textContent=msg;
+
+            // while
+            let j = 0;
+            while(j < num) {
+                msg += " while "+j;
+                j++;
+            }
+            document.querySelector('h1#momon2').textContent=msg;
+
+
+        </script>
+    </body>
+
+</html>
