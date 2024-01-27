@@ -1,0 +1,38 @@
+<html>
+    <head>
+
+    </head>
+    <body>
+        <h1> 숫자입력</h1>
+        <div>
+            <input id="text_input" type="text"> 
+            <button id="btn1"> 입력</button> // 버튼 눌럿을때 행동을 읽는것이 listener
+            <button id="btn2"> 색변경</button>
+        </div>
+        <h2 id='result'></h2>
+        <script>
+            // 이벤트 
+            // 사용자가 컴퓨터에게 행동을 일으키는 것, 버튼누르기, 슬라이드바 조종 같은것, 위젯의 조작
+
+            // listener 이벤트를 감지하는 컴퓨터의 프로세스
+            // 이벤트를 받아서 동작을 수행/처리 하는 것, 자바스크립트에선 listener를 함수로 만들어서 구현한다.
+            const w_btn1 = document.querySelector('#btn1'); // id가 btn1 인거
+            const w_btn2 = document.querySelector('#btn2');
+            const w_input = document.querySelector('#text_input');
+            const w_result = document.querySelector('#result');
+
+            // w_btn1.addEventListener('click', () => {console.log('클릭'); }); // 이벤트 리스너를 설정, 'click' 하면, 화살표함수 실행
+            w_btn1.addEventListener('click', () => {
+                // 버튼눌렀을때 text의 값을 불러와서 로직 처히 후 결과를 다른 곳에다 쓰는 
+                console.log('클릭'); 
+
+                const temp = parseInt(w_input.value); // 숫자로 받기
+
+                w_result.textContent = temp + ''; // 출력은 문자열로
+                // 숫자 입력 안되면 NaN Not a number 뜬다.
+            }); 
+            // w_btn1.addEventListener('click', () => {});
+        </script>
+    </body>
+
+</html>
