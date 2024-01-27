@@ -1,0 +1,42 @@
+<html>
+    <head>
+
+    </head>
+    <body>
+        <h1 id='momon'>안녕하세요</h1>
+        <script>
+            // parseInt 로 문자열 string 을 number로 받아올 수 있음.
+            const input_score = parseInt(prompt());
+
+            if (input_score >= 90) {
+                document.querySelector('h1#momon').textContent='A';
+            } else if (input_score >= 80) {
+                // document.querySelector('h1#momone').textContent='B'; // momone이 없으면 에러난다.
+                document.querySelector('h1#momon').textContent='B'; //
+            } else {
+                document.querySelector('h1#momon').textContent='C';
+            }
+
+            // switch
+            switch (input_score) {
+                case 100:
+                    document.querySelector('h1#momon').textContent='SSS';
+                    break;
+                case 95:
+                    document.querySelector('h1#momon').textContent='SS';
+                    break;
+                case 91:
+                    document.querySelector('h1#momon').textContent='S';
+                    break;
+            }
+
+            // 삼항연산자
+            const result = (input_score >=70 ? '70점이상' : '70점 밑') ;
+            console.log(result);
+
+
+
+        </script>
+    </body>
+
+</html>
