@@ -1,0 +1,62 @@
+<html>
+    <head>
+
+    </head>
+    <body>
+        <h1 id = 'h11'> 안녕하세요.11 </h1>
+        <h2 id = 'h21'> 안녕하세요.21 </h2>
+        <h2 id = 'h22'> 안녕하세요.22 </h2>
+        <h2 id = 'h23'> 안녕하세요.23 </h2>
+        <script>
+            // 변수, variable
+            // const : 상수, 한번 값을 대입하면 변경불가
+            // let : 일반 변수
+            let a = 10;
+            let b = 20;
+            let c = a + b; // 30
+            const d = a * 10; // 100
+            const e = a ** 3; // 1000
+            console.log(a);
+            console.log(b);
+            console.log(c);
+            console.log(d);
+            console.log(e);
+            
+            // 변수 입력받기
+            // const usrMsg = prompt() // 사용자 입력 : prompt()
+            // console.log(' 입력 메시지 : '+ usrMsg); // 입력없이 앤터치면 공백으로뜸
+            // let msg_null = null;
+            // let msg_undefined; // 널과다른 정의안된 메시지, 초기화안됬을때 에러내지 않고 이걸로 출력
+            // console.log(' msg_null 메시지 : '+ msg_null);
+            // console.log(' msg_undefined 메시지 : '+ msg_undefined);
+
+            // document의 변수 가져오기
+            let doc_h1 = document.querySelector('h1');
+            console.log(' doc_h1  : '+ doc_h1);
+            console.log(' doc_h1 메시지 : '+ doc_h1.textContent);
+            
+            // 
+            let doc_h2 = document.querySelectorAll('h2'); // h2가 여러개라서 querySelectorAll로 배열로 받아옴.
+            doc_h2.forEach((element) => {
+                element.textContent = "변경합니다.";
+            }); // 스트림으로 익명 메소드 구현가능
+            doc_h2.forEach((element, index) => {
+                element.textContent = "변경합니다."+index;
+            }); // 스트림으로 익명 메소드 구현가능
+
+            // 조건에 맞춰 값 변경하기
+            let msg = "", result = 3;
+            
+            if (result % 2 == 1) {
+                console.log("result는 홀수");
+            } else {
+                console.log("result는 짝수");
+            }
+
+
+
+
+        </script>
+    </body>
+
+</html>
