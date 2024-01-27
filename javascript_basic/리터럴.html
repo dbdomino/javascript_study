@@ -1,0 +1,61 @@
+<html>
+    <head>
+
+    </head>
+    <body>
+        <h1 id='momon'>안녕하세요</h1>
+        <script>
+            // Literal ---> 값 자체
+            // 1, 2, 3   Integer literal
+            // 3.14   Floating pointnumber literal
+            // 'hello'  string literal
+            // Object literal
+
+            // 배열
+            const arr1 = [ '미나미' , 30];
+            // object literal 객체 리터럴
+            const ol1 = { name:'나미나', age : 24} ; // 객체 같은 느낌이다.
+
+            console.log('ol1.name : '+ol1.name);
+            console.log('ol1.age : '+ol1.age);
+            console.log('ol1.age : '+ol1['name']);// 오... 이런식으로 된다는거군
+            console.log('ol1.age : '+ol1['age']);
+
+            ol1.age = 35;
+            console.log('ol1.age : '+ ol1.age);
+
+            console.log(Object.keys(ol1)); // Object.keys(객체리터럴) 객체리터럴의 key들을 배열로 반환함.
+            console.log(Object.values(ol1)); // Object.values(객체리터럴) 객체리터럴을 value들을 배열로 반환함.
+
+            // 배열이니 forEach 쓸 수 있을거같다.
+            // arrow function 으로 함수 만들기, 함수안에 forEach 구현
+
+            const ol2 = { name:'나미나', age : 24} ; // 객체 이지만 배열같은 느낌이다.
+
+            const showOL = (ol) => { // ol는 object literal 이다.
+                const keys = Object.keys(ol);
+                const values = Object.values(ol);
+                keys.forEach( (elem, index) => {
+                    console.log(elem+' ---> '+ol[elem])  // ol[elem] 리터럴의 값을 이렇게 불러온다고?
+                    // 반복되어 모든 object literal의 값을 출력시킴
+                });
+            };
+
+            showOL(ol2);
+
+            const showOL2 = (ol) => {
+                const keys= Object.keys(ol); 
+                for (let i = 0 ; i < keys.length; i++) {
+                    // 0 부터 인덱스기준으로? keys는 배열이니까 가능
+                    console.log('keys['+i+'] : '+ keys[i] + ' , ol[keys['+i+']] : '+ ol[keys[i]]);
+
+                }
+            };
+            showOL2(ol2);
+
+
+
+        </script>
+    </body>
+
+</html>
