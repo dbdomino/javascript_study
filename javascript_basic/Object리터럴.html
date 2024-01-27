@@ -1,0 +1,123 @@
+<html>
+    <head>
+
+    </head>
+    <body>
+        <h1 id='momon'>안녕하세요</h1>
+        <script>
+            // Object Literal ---> 안에 변수 뿐만 아니라 또다른 object Literal도 추가 가능하다.
+            // 또한 function도 추가 가능하다.(메소드를 추가 가능하다.)
+
+
+            const ol1 = { name:'나미나', age : 24} ; // 객체 이지만 배열같은 느낌이다.
+            const ol2 = { name:'나미나', age : 24} ; // 객체에 메소드를 이후에 계속 추가시킴, 이것도 가능
+            const ol3 = { name:'나미나', age : 24} ; // 
+            const ol4 = { name:'나미나', age : 27} ; // 
+            // 리터럴안에 함수 추가
+            ol2.sayHello = () => {console.log('ol2안의 sayHello 고고');};
+            ol2.sayHello();
+            ol2.sayHello2 = (n) => {console.log('ol2안의 sayHello2 고고 : '+ n);};
+            ol2.sayHello2('hurry');
+            ol2.sayHello2(1234);
+
+            ol2.sayDiff = (n) => {
+                if (ol2.age > n) {
+                    return true;
+                } else {
+                    return false;
+                }
+            };
+            console.log('ol2.saydiff 30 : '+ol2.sayDiff(30)); // false
+            
+            // 리터럴 안에 오브젝트 리터럴 넣기
+            const a = {
+                name: "아카네",
+                detail: {
+                    charming : '과자',
+                    stacks: 5
+                },
+                age: 7
+            }
+
+            // 리터럴 ol2 ol3 ol4 비교하기, 이는 참조변수로 주소가 다 다르기에 다르다가 맞다.
+            if (ol3 == ol2){  // 다르다.
+                console.log('같다');
+            } else {
+                console.log('다르다');
+            }
+
+            if (ol3 === ol2){  // 다르다.
+                console.log('같다');
+            } else {
+                console.log('다르다');
+            }
+
+            if (ol4 == ol2){  // 다르다.
+                console.log('같다');
+            } else {
+                console.log('다르다');
+            }
+
+            if (ol4 === ol2){  // 다르다.
+                console.log('같다');
+            } else {
+                console.log('다르다');
+            }
+            // 리터럴을 비교하려면 == ===로 비교할게 아니라, 안에 들은 값으로 비교해야 한다.
+            const compare_ol = (o1, o2) => {
+                if( (o1.name === o2.name) && (o1.age === o2.age)) {
+                    return true;
+                } else {
+                    return false;
+                }
+            };
+            // key 가 name이나 age 이외에도 있을 경우 비교하기
+            // 애로우함수 안에 에로우함수도 넣기 가능
+            const compare_ol2 = (o1, o2) => {
+                let o1_keys = Object.keys(o1);
+                let o2_keys = Object.keys(o2);
+
+                o1_keys = o1_keys.sort(); // 키값 정렬
+                o2_keys = o2_keys.sort(); // 키값 정렬
+
+                let flag = true;
+
+                if (o1_keys.length !== o2_keys.length) {
+                    console.log(o1_keys.length +"   "+ o2_keys.length);
+                    return false;
+                }
+
+                o1_keys.forEach( (element, index) => {  // 애로우 함수라서 여기서 return 거는게 의미가없다.
+                    // flag로 상태를 걸어 출력하자
+                    // index 기준으로 하나라도 다르면 false 리턴
+                    if (o1_keys[index] !== o2_keys[index] ) { // key가 같은지비교
+                        console.log(o1_keys[index] +"   "+ o2_keys[index]);
+                        flag = false;    
+                    }
+                    if (o1[o1_keys[index]] !== o2[o2_keys[index]]) { // value도 같은지 비교
+                        console.log(o1[o1_keys[index]]  +"   "+ o2[o2_keys[index]]);
+                        flag = false;    
+                    }
+                    
+                    
+                });
+                return flag;
+
+            };
+
+
+
+            console.log('compare_ol ol1 ol4 : ' + compare_ol(ol1, ol4)); // false
+            console.log('compare_ol ol1 ol3 : ' + compare_ol(ol1, ol3)); // true
+            console.log('compare_ol2 ol1 ol3 : ' + compare_ol2(ol1, ol3)); // false
+            console.log('compare_ol2 ol1 ol4 : ' + compare_ol2(ol1, ol4)); // false
+
+
+
+
+
+
+        </script>
+    </body>
+
+</html>
