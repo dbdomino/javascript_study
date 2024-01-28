@@ -1,0 +1,172 @@
+<html>
+    <head>
+        <style>
+            button {
+                width:50px;
+                height:50px;
+                margin:5px;
+            }
+            #operator {
+                width: 50px;
+                height:50px;
+                margin: 0px 30px 5px 0px;
+                text-align: center;
+            }
+            #result {
+                width: 160px;
+                height:50px;
+                margin:5px;
+                text-align: right;
+            }
+        </style>
+
+    </head>
+    <body>
+        <input readonly id="operator">
+        <input readonly type="number" id="result">
+        <div>
+            <button id="n7">7</button>
+            <button id="n8">8</button>
+            <button id="n9">9</button>
+            <button id="op_div">/</button>
+            <button id="op_dist">←</button>
+        </div>
+        <div>
+            <button id="n4">4</button>
+            <button id="n5">5</button>
+            <button id="n6">6</button>
+            <button id="op_mul">*</button>
+        </div>
+        <div>
+            <button id="n1">1</button>
+            <button id="n2">2</button>
+            <button id="n3">3</button>
+            <button id="op_mi">-</button>
+        </div>
+        <div>
+            <button id="op_clr">clear</button>
+            <button id="n0">0</button>
+            <button id="op_cal">=</button>
+            <button id="op_plus">+</button>
+        </div>
+
+        <script>
+            let numFirst = ''; // 계산입력 첫 번째 숫자, 문자열처럼 입력하는 것이므로
+            let numSecond= ''; // 계산업력 두 번째 숫자, 문자열처럼 입력하는 것이므로
+            let op_input= ''; // 연산자 어떤게 들어올지 저장하는
+            let result = 0;
+
+            const op_input_result = document.querySelector('#result')
+            const op_input_operator = document.querySelector('#operator')
+
+            const fn_input_num = (n) => { // 결과로 함수를 리턴해야 한다.
+                return () => {
+                    if (op_input === '') {
+                        numFirst = numFirst+n; // fn_input_num인자로 받은 n을 익명함수에 넣어 함수로 리턴가능
+                        op_input_result.value=numFirst;
+                    } else {
+                        numSecond = numSecond+n;
+                        op_input_result.value=numSecond;
+                    }
+                }
+                
+            };
+            const fn_dist_num = () => { // 결과로 함수를 리턴해야 한다.
+                return () => {
+                    if (op_input === '') {
+                        numFirst = numFirst.slice(0,-1); // fn_input_num인자로 받은 n을 익명함수에 넣어 함수로 리턴가능
+                        op_input_result.value=numFirst;
+                    } else {
+                        numSecond = numSecond.slice(0,-1);
+                        op_input_result.value=numSecond;
+                    }
+                }
+                
+            };
+            
+            // const opFund=(op) => () => {};   // opFunc를 opFund처럼 작성할 수도 있다.
+            const fn_input_operator = (op) =>  // 결과로 함수를 리턴해야 한다.
+                () => {
+                    switch(op) {
+                        case '+':
+                            op_input = '+';
+                            op_input_operator.value= '+';
+                            break;
+                        case '-':
+                            op_input = '-';
+                            op_input_operator.value= '-';
+                            break;
+                        case '*':
+                            op_input = '*';
+                            op_input_operator.value= '*';
+                            break;
+                        case '/':
+                            op_input = '/';
+                            op_input_operator.value= '/';
+                            break;
+                        case '=':
+                            switch (op_input) {
+                                case '+':
+                                    op_input_result.value = parseInt(numFirst) + parseInt(numSecond);
+                                    break;
+                                case '-':
+                                    op_input_result.value = parseInt(numFirst) - parseInt(numSecond);
+                                    break;
+                                case '*':
+                                    op_input_result.value = parseInt(numFirst) * parseInt(numSecond);
+                                    break;
+                                case '/':
+                                    op_input_result.value = parseInt(numFirst) / parseInt(numSecond);
+                                    break;
+                            }
+                            op_input_operator.value= '';
+                            break;
+                        case 'clear':
+                            numFirst = ''
+                            numSecond = '';
+                            op_input_operator.value= '';
+                            op_input_result.value= '';
+                            break;
+                    }
+                    
+                };
+
+
+            // document.querySelector('#n').addEventListener('click',()=>{console.log('  클릭완료')});
+            // 이런식으로 단순무식하게 늘리면 함수가 길어 한도끝도 없다. 반복을 통해 코드를 줄일 필요가 있다.
+            // 이벤트 리스너의 인자로 함수가 들어가야되므로, 함수를 반한하는 고차원 함수 사용
+            // document.querySelector('#n0').addEventListener('click',()=>{console.log('  클릭완료')
+            //     if (op_input === null) {
+            //         numFirst = numFirst+'0';
+            //     } else {
+            //         numSecond = numSecond+'0';
+            //     }
+            // });
+            document.querySelector('#n0').addEventListener('click',fn_input_num('0'));
+            document.querySelector('#n1').addEventListener('click',fn_input_num('1'));
+            document.querySelector('#n2').addEventListener('click',fn_input_num('2'));
+            document.querySelector('#n3').addEventListener('click',fn_input_num('3'));
+            document.querySelector('#n4').addEventListener('click',fn_input_num('4'));
+            document.querySelector('#n5').addEventListener('click',fn_input_num('5'));
+            document.querySelector('#n6').addEventListener('click',fn_input_num('6'));
+            document.querySelector('#n7').addEventListener('click',fn_input_num('7'));
+            document.querySelector('#n8').addEventListener('click',fn_input_num('8'));
+            document.querySelector('#n9').addEventListener('click',fn_input_num('9'));
+            // 연산자 처리
+            document.querySelector('#op_clr').addEventListener('click',()=>{console.log('  클릭완료')
+                op_input='';
+            });
+            document.querySelector('#op_clr').addEventListener('click',fn_input_operator('clear'));
+            document.querySelector('#op_cal').addEventListener('click',fn_input_operator('='));
+            document.querySelector('#op_plus').addEventListener('click',fn_input_operator('+'));
+            document.querySelector('#op_mi').addEventListener('click',fn_input_operator('-'));
+            document.querySelector('#op_mul').addEventListener('click',fn_input_operator('*'));
+            document.querySelector('#op_div').addEventListener('click',fn_input_operator('/'));
+
+            document.querySelector('#op_dist').addEventListener('click',fn_dist_num());
+
+
+        </script>
+
+    </body>
+</html>
