@@ -1,0 +1,36 @@
+<html>
+    <head>
+
+    </head>
+    <body>
+        <h1> setTimeout setInterval</h1>
+        <script>
+            // setTimeout : 일정 시간 후에 1번 실행
+            const hello = () => {console.log('안녕')}
+            setTimeout(hello, 3000) // 밀리세컨드 1/1000초 후에 실행
+            // setTimeout(hello(), 3000) // setTimeout(함수, 밀리초) 가 들어가므로 hello()가 들어가면 오류로 실행안된다. 에러는안남
+            setTimeout(()=> {console.log('화살함수 setTimeout,실행 ')}, 3000)
+
+            // setInterval : 일정 주기로 끝없이 계속 실행
+            // 무한 반복되므로 멈출수있는 수단 필요
+            // clearInterval(setInterval) : 주기함수를 종료 
+            // setInterval(hello, 3000) // 밀리세컨드 1/1000초 후에 실행
+            
+            // 변수 선언시 setInterval()이 동작하여 무한반복 진행됨
+            const id_interval = setInterval(hello, 1000); // setInterval은 ,고유 id를 리턴한다 
+            console.log('setinteval id : ' +111) // setInterval은 ,고유 id를 리턴한다
+            // 중요한게, 위에 setTimeout이 실행고 바로 console.log 이거도 실행되면서 
+            // console.log 가 먼저뜨고 위에 setTimeout 명령에 시간지난 후 함수 실행된다.
+            setTimeout( () => {
+                clearInterval(id_interval);
+                console.log('id_interval 을 clearInterval로 종료')
+            }, 9000)
+
+
+            // clearInterval(setInterval) // 밀리세컨드 1/1000초 후에 실행
+           
+
+        </script>
+    </body>
+
+</html>
