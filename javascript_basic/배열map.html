@@ -1,0 +1,37 @@
+<html>
+    <head>
+
+    </head>
+    <body>
+        <h1 id = 'h11'> 안녕하세요.11 </h1>
+        <script>
+            // 배열 array 아래 둘다 배열
+            const arrA = [];
+            const a = Array(10);
+            console.log(arrA);
+            console.log(a);
+            // 1. fill() 배열 fill() 메소드로 전체초기화 가능
+            arrA.fill(3); // 크기가 정의되지 않아서 초기화안되네, 오류도안남
+            console.log(arrA);
+            a.fill(3);
+            console.log(a);
+
+            // 2. mapping [0, 1, 2]  원본
+            // 매핑이란??   ↓  ↓  ↓     map 이라고도 하며, 원본 배열에서 어떤 규칙으로 새로운 배열을 만드는 것을 매핑
+            //            [5, 6, 7]  새로 생성
+            // map(함수 규칙) map(element, index), forEach처럼 여기도 이구조네
+            console.log('a.map( ~~~ )');
+
+            // arrA = a.map( (element, index) => {return index;} ) // const로된 배열이라 참조주소를 변경하지못해서 에러
+            let arrB = a.map( (element, index) => {return index;} )
+            console.log(arrB);
+            a.fill(3);
+            arrB = a.map( (element, index) => {return index+2;} )
+            console.log(arrB);
+
+
+
+        </script>
+    </body>
+
+</html>

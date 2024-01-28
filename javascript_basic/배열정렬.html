@@ -1,0 +1,115 @@
+<html>
+    <head>
+
+    </head>
+    <body>
+        <h1 id = 'h11'> 안녕하세요.11 </h1>
+        <script>
+            // 배열 array 아래 둘다 배열
+            const a = Array(10);
+            console.log(a);
+            // 1. fill() 배열 fill() 메소드로 전체초기화 가능
+            a.fill(3);
+            console.log(a);
+
+            // 2. mapping [0, 1, 2]  원본
+            // 매핑이란??   ↓  ↓  ↓     map 이라고도 하며, 원본 배열에서 어떤 규칙으로 새로운 배열을 만드는 것을 매핑
+            //            [5, 6, 7]  새로 생성
+            // map(함수 규칙) map(element, index), forEach처럼 여기도 이구조네
+            console.log('a.map( ~~~ )');
+
+            // arrA = a.map( (element, index) => {return index;} ) // const로된 배열이라 참조주소를 변경하지못해서 에러
+            const arrB = a.map( (element, index) => {return index;} )
+            console.log(arrB);
+
+            // 3. sort 정렬
+            const c = [ 25, 1,9,3,67, 7,29,23];
+            const d = [ 1,25, 9,3,67, 7,29,23];
+            console.log('c is : ' + c)
+            c.sort( (a, b)=> {  // 오름차순이 됨, sort를 구현 한 것
+                if (a < b) {
+                    return -1; //  a < b 일때 자리안바꿈
+                } else if (a > b) { 
+                    return 1; // a > b 일때 자리바꿈
+                } else {
+                    return 0; // 0 같음
+                }
+            } )
+            d.sort( (a, b)=> {  // 내림차순이 됨, sort를 구현 한 것, 위와 반대
+                if (a < b) {
+                    return 1; // a < b 일때 자리안바꿈
+                } else if (a > b) { 
+                    return -1; // a > b 일때 자리바꿈
+                } else {
+                    return 0; // 0 같음
+                }
+            } )
+            console.log('sort complete c : '+c);
+            console.log('sort complete d : '+d);
+
+            // 4. 복사본 만들어서 slice, sort 정렬
+            // 배열에서 sort() 실행할 때, sort( 화살표함수 ) 로 하며 화살표함수 에서 정렬조건이 출력된다.
+            const arrA = [1, 2, 3, 4, 5, 6, 7, 8];
+            const arrA_1 = [1, 2, 3, 4, 5, 6, 7, 8];
+            const arrA_2 = [1, 2, 3, 4, 5, 6, 7, 8];
+            const arrC = [1, 2, 3, 4, 5, 6, 7, 8];
+            console.log('arrA  : '+arrA);
+            const arrA_slice = arrA_1.slice(2, 5); // 배열복사,  원본에 영향 없음.
+            const arrA_splice = arrA_2.splice(2, 5); // 배열 분할
+            // const arrA_splice = arrA_2.splice(2, 5, -1,-2,-33); // 값
+            console.log('arrA_slice  : '+arrA_slice); // 시작 인덱스 , 끝인덱스
+            console.log('arrA_1  : '+arrA_1); // 배열복사본 만들기, 원본에 영향 없음.
+
+            console.log('arrA_splice  : '+arrA_splice); // 시작 인덱스, 개수
+            console.log('arrA_2  : '+arrA_2); // 배열 원본 변경
+            console.log('')
+
+            arrC.slice(0,1);
+            console.log('arrC slice(0,1) : '+arrC); // 이렇게는 slice가 동작 안한다. 문자열이 아니라서
+            const arrC_sc= arrA.slice(0.2).sort( (a,b) => a-b) // a-b 이게 음수가되면 b가크므로 a와 b (-1)자리안바꿈, 양수가되면 a 가더 크므로 (1)자리바꿈
+            const arrC_sc2= arrA.sort( (a,b) => b-a) // 위와 반대
+            console.log('arrC.slice().sort( (a,b) => a-b) : '+arrC_sc); // 이렇게는 slice가 동작 안한다. 문자열이 아니라서
+            console.log('arrC.sort( (a,b) => b-a) : '+arrC_sc2); // 이렇게는 slice가 동작 안한다. 문자열이 아니라서
+
+            // 5. 숫자가 아닌 문자열 정렬
+            console.log()
+            const arrS = ['banana', 'apple', 'orange']
+            // const arrSa = arrS.slice().sort( (a,b) => a-b) // 정렬 안됨 숫자랑 다른듯
+            // const arrSa = arrS.slice().sort( (a,b) => b-a) // 정렬 안됨
+            // const arrSa = arrS.slice().sort( (a,b) => { return (a<b)?-1:(a>b)?1:0; } ); // 오름차순
+            // const arrSa = arrS.slice().sort( (a,b) => (a>b)?-1:(a<b)?1:0); // 내림차순 -1이면 자리안바꿈, 1이면 자리바꿈
+            const arrSa = arrS.slice().sort( (a,b) => a.localeCompare(b)); // 더 나은 방법
+            
+            console.log(arrS)
+            console.log(arrSa)
+
+            // 6. .sort( (a,b) => a.localeCompare(b)) 함수로 비교하는 방법
+            // 미국에선 지역마다 특수한 알파벳을 쓰는데, 이를 지역성으로 분류한다그래서 locale이라고 지었다고 함.
+            console.log()
+            const arrSS = ['abc', 'Abe', 'zbe', 'Zbc']
+            const arrLocale1 = arrSS.slice().sort((a,b) => (a<b)?-1:(a>b)?1:0 );
+            // const arrLocale2 = arrSS.slice().sort((a,b) => a.localeCompare(b)); 
+            const arrLocale2 = arrSS.slice().sort((a,b) => a.localeCompare(b, {'sensitivity': 'base'})); // sensitivity라고 해서 민감도 설정, 대소문자구분안함이 base로 기본값이다.
+            // 대소문자구분안해서 알파뱃순으로 나오는게 더 나은경우가 많으니 이걸 주로 사용하는듯
+
+            console.log('arrSS : '+ arrSS)           //  abc,Abe,zbe,Zbc 기본
+            console.log('arrLocale1 : '+ arrLocale1) //  Abe,Zbc,abc,zbe 대문자가 소문자보다 더빨라서, 오름차순시 이렇게 됨.
+            console.log('arrLocale2 : '+ arrLocale2) //  abc,Abe,Zbc,zbe localeCompare 를 써서 대소문자 구분없이 알파벳만 기준으로 구분됨.
+            // 문자열 정렬시 구분해야 하는 구조임...
+
+            arrSS.splice(arrSS.length, 2, '가가', '나나')
+            console.log('arrSS : '+ arrSS)           //  abc,Abe,zbe,Zbc,가가,나나 한글표현
+            const arrLocale3 = arrSS.slice().sort((a,b) => (a<b)?-1:(a>b)?1:0 ); // 오름차순
+            const arrLocale4 = arrSS.slice().sort((a,b) => a.localeCompare(b) ); // 오름차순 
+            const arrLocale5 = arrSS.slice().sort((a,b) => b.localeCompare(a) ); // 내림차순 
+            console.log('arrLocale3 : '+ arrLocale3) //  Abe,Zbc,abc,zbe,가가,나나
+            console.log('arrLocale4 : '+ arrLocale4) //  가가,나나,abc,Abe,Zbc,zbe  localeCompare 특성상 브라우저의 지역의 언어가 우선순위높게되어 한글부터나옴.
+            console.log('arrLocale5 : '+ arrLocale5) //  zbe,Zbc,Abe,abc,나나,가가  내림차순시 반대로
+
+
+
+
+        </script>
+    </body>
+
+</html>
