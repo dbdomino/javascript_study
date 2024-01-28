@@ -1,0 +1,42 @@
+<html>
+    <head>
+
+    </head>
+    <body>
+        <h1 id='momon'>안녕하세요</h1>
+        <script>
+            // 문자열 슬라이스
+            let aa = 'abcdefg';
+            let b = 'abcdefg';
+            let c = 'abcdefg';
+            let d = 'abcdefg';
+            console.log(aa);
+            // aa  = aa.slice(0,2);
+            // aa  = aa.slice(0,3);
+            // aa  = aa.slice(0,3);
+            // aa  = aa.slice(0,5);
+            aa  = aa.slice(0,-1); // 뒤에서하나만 자르기
+            console.log('slice(0,-1) : '+aa);
+            d = d.slice(0,-3);
+            console.log('slice(0,-2) : '+d); // abcd
+            b = b.slice(0,1);
+            console.log('slice(0,1) : '+b); // a
+            c = c.slice(0,2);
+            console.log('slice(0,2) : '+c); // ab
+            console.log('       ');
+            const arrA = [1, 2, 3, 4, 5, 6, 7, 8];
+            console.log('arrA  : '+arrA);
+            arrA.slice(0,1);
+            console.log('arrA slice(0,1) : '+arrA);
+            arrA.slice(1,2);
+            console.log('arrA slice(1,2) : '+arrA);
+            arrA.slice(0,-1);
+            console.log('arrA slice(0,-1) : '+arrA);
+
+
+
+
+        </script>
+    </body>
+
+</html>
